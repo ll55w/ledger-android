@@ -19,10 +19,11 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - name: 安装 Gradle 8.4
-        uses: gradle/actions/setup-gradle@v3
-        with:
-          gradle-version: "8.4"
+      - name: 下载并安装 Gradle 8.4
+        run: |
+          wget -q https://services.gradle.org/distributions/gradle-8.4-bin.zip -O /tmp/gradle.zip
+          unzip -q /tmp/gradle.zip -d /opt
+          echo "/opt/gradle-8.4/bin" >> "$GITHUB_PATH"
 
       - name: 编译 Debug APK
         run: gradle assembleDebug --no-daemon
