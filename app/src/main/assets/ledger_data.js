@@ -1,1 +1,0 @@
-window.LD={"records":[],"funds":[]};
